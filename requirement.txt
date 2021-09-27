@@ -4,4 +4,5 @@
 
    - Import code berikut pada index.js
             import 'react-native-gesture-handler';
-2. 
+2. Cara Upgrade React native
+    npx react-native upgrade

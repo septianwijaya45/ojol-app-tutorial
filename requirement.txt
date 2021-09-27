@@ -11,5 +11,11 @@
     navigation.navigate() => screen bisa diclick button android back
     navigation.replace()  => screen tidak bisa back ketika button back android diclick
 
+4. .svg illustration detection
+    npm add react-native-svg
+    npm add --dev react-native-svg-transformer
+
+    Lalu edit metro.config.js seperti pada file tersebut
+
 xx. Cara Upgrade React native
     npx react-native upgrade

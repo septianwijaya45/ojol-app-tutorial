@@ -1,17 +1,32 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {imgWelcomeAuth} from '../../assets';
+import {ImgWelcomeAuth} from '../../assets';
 import {colors} from '../../utils/colors';
 import ActionButton from './ActionButton';
 
 const WelcomeAuth = () => {
+  const navigation = useNavigation();
+  const handleGoTo = screen => {
+    navigation.navigate(screen);
+  };
   return (
     <View style={styles.wrapper.page}>
-      <Image source={imgWelcomeAuth} style={styles.wrapper.logo} />
+      <ImgWelcomeAuth style={styles.wrapper.logo} />
       <Text style={styles.text.welcome}>Welcome Auth</Text>
-      <ActionButton title="Have an account? Login Here" button="Login" />
-      <ActionButton title="Or create account" button="Register" />
+      <ActionButton
+        title="Have an account? Login Here"
+        button="Login"
+        onPress={() => {
+          navigation.navigate('Login');
+        }}
+      />
+      <ActionButton
+        title="Or create account"
+        button="Register"
+        onPress={() => handleGoTo('Register')}
+      />
     </View>
   );
 };

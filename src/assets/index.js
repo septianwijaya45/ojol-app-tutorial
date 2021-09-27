@@ -1,3 +1,3 @@
-import imgWelcomeAuth from './illustrations/undraw_Vehicle.png';
+import ImgWelcomeAuth from './illustrations/Vehicle.svg';
 
-export {imgWelcomeAuth};
+export {ImgWelcomeAuth};

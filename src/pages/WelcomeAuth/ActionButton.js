@@ -3,11 +3,11 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {Button} from '../../components';
 import {colors} from '../../utils/colors';
 
-const ActionButton = props => {
+const ActionButton = ({title, button, onPress}) => {
   return (
     <View style={styles.wrapper.component}>
-      <Text style={styles.text.title}>{props.title}</Text>
-      <Button title={props.button} />
+      <Text style={styles.text.title}>{title}</Text>
+      <Button title={button} onPress={onPress} />
     </View>
   );
 };

@@ -4,5 +4,12 @@
 
    - Import code berikut pada index.js
             import 'react-native-gesture-handler';
-2. Cara Upgrade React native
+2. React Navigation/Stack
+    npm install @react-navigation/stack@^5.x
+
+3. Perbedaan navigation.navigate() dan navigation.replace()
+    navigation.navigate() => screen bisa diclick button android back
+    navigation.replace()  => screen tidak bisa back ketika button back android diclick
+
+xx. Cara Upgrade React native
     npx react-native upgrade

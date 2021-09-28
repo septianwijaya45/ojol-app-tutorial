@@ -1,38 +1,77 @@
-import React from 'react';
+import {useNavigation} from '@react-navigation/core';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import {Back, IconRegister} from '../../assets';
 import {Button, Input} from '../../components';
 import {colors} from '../../utils/colors';
 
 const Register = () => {
+  const navigation = useNavigation();
+  const [form, setForm] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+  });
+
+  // Simpan Data
+  const sendData = () => {
+    console.log('Data Tersimpan!', form);
+  };
+
+  // check jika data di input value berubah
+  const onInputChange = (value, input) => {
+    setForm({
+      ...form, //harus diberi ini karena akan ketahuan form kosong jika tidak diisi
+      [input]: value,
+    });
+  };
+
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity style={styles.iconBack}>
-        <Back />
-      </TouchableOpacity>
-      <View>
-        <Text style={styles.text.register}>Register Page</Text>
-        <View style={styles.illustration}>
-          <IconRegister />
+      <ScrollView showVerticalIndicator={false}>
+        <TouchableOpacity
+          style={styles.iconBack}
+          onPress={() => navigation.navigate('WelcomeAuth')}>
+          <Back />
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.text.register}>Register Page</Text>
+          <View style={styles.illustration}>
+            <IconRegister />
+          </View>
+          <Text style={styles.text.desc}>
+            Silahkan mengisi form untuk proses akun login Anda
+          </Text>
         </View>
-        <Text style={styles.text.desc}>
-          Silahkan mengisi form untuk proses akun login Anda
-        </Text>
-      </View>
-      <View style={styles.form.formInput}>
-        <View style={styles.form.input}>
-          <Input placeholder="Nama Lengkap" />
+        <View style={styles.form.formInput}>
+          <View style={styles.form.input}>
+            <Input
+              placeholder="Nama Lengkap"
+              value={form.fullName}
+              onChangeText={value => onInputChange(value, 'fullname')}
+            />
+          </View>
+          <View style={styles.form.input}>
+            <Input
+              placeholder="Email"
+              value={form.email}
+              onChangeText={value => onInputChange(value, 'email')}
+            />
+          </View>
+          <View style={styles.form.input}>
+            <Input
+              placeholder="Password"
+              value={form.password}
+              onChangeText={value => onInputChange(value, 'password')}
+              secureTextEntry={true}
+            />
+          </View>
         </View>
-        <View style={styles.form.input}>
-          <Input placeholder="Email" />
+        <View style={styles.form.submit}>
+          <Button title="Register" onPress={sendData} />
         </View>
-        <View style={styles.form.input}>
-          <Input placeholder="Password" />
-        </View>
-      </View>
-      <View style={styles.form.submit}>
-        <Button title="Register" />
-      </View>
+      </ScrollView>
     </View>
   );
 };

@@ -4,8 +4,16 @@ import {StyleSheet, Text, View} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {colors} from '../../../utils/colors';
 
-const Input = ({placeholder}) => {
-  return <TextInput style={styles.input} placeholder={placeholder} />;
+const Input = ({placeholder, ...rest}) => {
+  // ....rest untuk menghandle semua props yang belum dihandle
+  return (
+    <TextInput
+      style={styles.input}
+      placeholder={placeholder}
+      placeholderTextColor={colors.default}
+      {...rest}
+    />
+  );
 };
 
 export default Input;

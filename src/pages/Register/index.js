@@ -1,18 +1,24 @@
 import {useNavigation} from '@react-navigation/core';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useSelector} from 'react-redux';
 import {Back, IconRegister} from '../../assets';
 import {Button, Input} from '../../components';
 import {colors} from '../../utils/colors';
 
 const Register = () => {
   const navigation = useNavigation();
+  const RegisterReducer = useSelector(state => state.RegisterReducer);
   const [form, setForm] = useState({
     fullName: '',
     email: '',
     password: '',
   });
+
+  useEffect(() => {
+    console.log(RegisterReducer);
+  }, [RegisterReducer]);
 
   // Simpan Data
   const sendData = () => {
@@ -41,7 +47,8 @@ const Register = () => {
             <IconRegister />
           </View>
           <Text style={styles.text.desc}>
-            Silahkan mengisi form untuk proses akun login Anda
+            Silahkan mengisi form untuk proses akun login Anda{' '}
+            {RegisterReducer.title}
           </Text>
         </View>
         <View style={styles.form.formInput}>

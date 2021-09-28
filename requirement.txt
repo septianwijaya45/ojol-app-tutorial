@@ -17,5 +17,8 @@
 
     Lalu edit metro.config.js seperti pada file tersebut
 
+5. Install Redux
+    npm i react-redux
+
 xx. Cara Upgrade React native
     npx react-native upgrade

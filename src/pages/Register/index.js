@@ -1,14 +1,15 @@
 import {useNavigation} from '@react-navigation/core';
-import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
-import {Back, IconRegister} from '../../assets';
+import {IconRegister} from '../../assets';
 import {Button, Input} from '../../components';
 import {setForm} from '../../redux';
 import {colors} from '../../utils/colors';
 
-const Register = navigation => {
+const Register = () => {
+  const navigation = useNavigation();
   const RegisterReducer = useSelector(state => state.RegisterReducer.form);
   const dispatch = useDispatch();
 
@@ -25,11 +26,7 @@ const Register = navigation => {
   return (
     <View style={styles.wrapper}>
       <ScrollView showVerticalIndicator={false}>
-        <TouchableOpacity
-          style={styles.iconBack}
-          onPress={() => navigation.navigate('WelcomeAuth')}>
-          <Back />
-        </TouchableOpacity>
+        <Button name="back" type="icon" onPress={() => navigation.goBack()} />
         <View>
           <Text style={styles.text.register}>Register Page</Text>
           <View style={styles.illustration}>

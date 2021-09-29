@@ -16,6 +16,10 @@ const initialStateRegister = {
 const initialStateLogin = {
   info: 'Email & Password must be entered',
   isLogin: true,
+  form: {
+    email: '',
+    password: '',
+  },
 };
 
 const RegisterReducer = (state = initialStateRegister, action) => {
@@ -38,6 +42,15 @@ const RegisterReducer = (state = initialStateRegister, action) => {
 };
 
 const LoginReducer = (state = initialStateLogin, action) => {
+  if (action.type == 'SET_FORM') {
+    return {
+      ...state,
+      form: {
+        ...state.form,
+        [action.inputType]: action.inputValue,
+      },
+    };
+  }
   return state;
 };
 

@@ -20,5 +20,9 @@
 5. Install Redux
     npm i react-redux
 
+6. menghilangkan yang tidak digunakan
+    win => alt+shift+o
+    ios => opt+shift+o
+
 xx. Cara Upgrade React native
     npx react-native upgrade
